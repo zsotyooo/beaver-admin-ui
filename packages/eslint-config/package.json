@@ -1,17 +1,17 @@
 {
-  "name": "@digital-beaver/eslint-config",
-  "version": "0.1.0",
-  "type": "module",
-  "main": "index.js",
-  "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^8.25.0",
-    "@typescript-eslint/parser": "^8.25.0",
-    "@vue/eslint-config-prettier": "^10.2.0",
-    "@vue/eslint-config-typescript": "^14.4.0",
-    "eslint": "^9.21.0",
-    "eslint-plugin-vue": "^9.32.0"
-  },
-  "peerDependencies": {
-      "eslint": "^9.0.0"
-    }
+	"name": "@digital-beaver-admin/eslint-config",
+	"private": true,
+	"type": "module",
+	"main": "index.js",
+	"dependencies": {
+		"@typescript-eslint/eslint-plugin": "^8.25.0",
+		"@typescript-eslint/parser": "^8.25.0",
+		"@vue/eslint-config-prettier": "^10.2.0",
+		"@vue/eslint-config-typescript": "^14.4.0",
+		"eslint": "^9.21.0",
+		"eslint-plugin-vue": "^9.32.0"
+	},
+	"peerDependencies": {
+		"eslint": "^9.0.0"
+	}
 }

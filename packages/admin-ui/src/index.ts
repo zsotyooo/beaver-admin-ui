@@ -1,3 +1,5 @@
-import TestComponent from "./TestComponent.vue";
+import "./assets/index.css";
 
-export {TestComponent};
+import TestComponent from "./components/TestComponent.vue";
+
+export { TestComponent };

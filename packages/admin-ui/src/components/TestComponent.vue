@@ -2,5 +2,7 @@
 const x = 1;
 </script>
 <template>
-    <div>{{ x }}</div>
+	<div class="text-red-500">
+		{{ x }}
+	</div>
 </template>
