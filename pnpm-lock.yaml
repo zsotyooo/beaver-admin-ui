@@ -32,9 +32,6 @@ importers:
       '@digital-beaver-admin/admin-ui':
         specifier: workspace:*
         version: link:../../packages/admin-ui
-      lucide-vue-next:
-        specifier: ^0.476.0
-        version: 0.476.0(vue@3.5.13(typescript@5.7.3))
     devDependencies:
       '@histoire/plugin-vue':
         specifier: 1.0.0-alpha.2

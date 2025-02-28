@@ -1,10 +1,11 @@
 import "@digital-beaver-admin/admin-ui/dist/admin-ui.css";
-import { isDark } from "histoire/client";
+import { isDark, isCollecting } from "histoire/client";
 
-if (document) {
+if (!isCollecting()) {
 	setInterval(() => {
-		const htmlElement = document.documentElement; // Get the <html> element
-		if (isDark()) htmlElement.classList.add("dark");
-		else htmlElement.classList.remove("dark");
+		const htmlElement = document.documentElement;
+		if (htmlElement) {
+			htmlElement.classList[isDark() ? "add" : "remove"]("dark");
+		}
 	}, 1000);
 }

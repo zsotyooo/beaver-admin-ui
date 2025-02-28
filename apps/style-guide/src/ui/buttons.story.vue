@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { ScnButton } from "@digital-beaver-admin/admin-ui";
-import { Camera, Rocket } from "lucide-vue-next";
+import { ScnButton, Camera, Rocket } from "@digital-beaver-admin/admin-ui";
 
 const variants = [
 	"default",
