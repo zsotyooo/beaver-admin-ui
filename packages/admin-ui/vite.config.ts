@@ -4,6 +4,7 @@ import vue from "@vitejs/plugin-vue";
 import dts from "vite-plugin-dts";
 import autoprefixer from "autoprefixer";
 import tailwind from "tailwindcss";
+import Components from "unplugin-vue-components/vite";
 
 export default defineConfig({
 	css: {
@@ -16,6 +17,12 @@ export default defineConfig({
 		dts({
 			insertTypesEntry: true,
 			include: ["src"],
+		}),
+		Components({
+			dirs: ["src/components"],
+			extensions: ["vue"],
+			deep: true,
+			dts: "src/components.d.ts",
 		}),
 	],
 	resolve: {

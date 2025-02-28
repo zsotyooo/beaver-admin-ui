@@ -2,6 +2,7 @@ import animate from "tailwindcss-animate";
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	darkMode: ["class"],
+	safelist: ['dark'],
 	content: ["./src/**/*.{ts,js,vue}"],
 	theme: {
 		extend: {

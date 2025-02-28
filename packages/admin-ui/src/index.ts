@@ -1,5 +1,6 @@
 import "./assets/index.css";
 
-import TestComponent from "./components/TestComponent.vue";
+import ScnButton from "./components/ui/button/Button.vue";
+import { cn } from "./lib/utils";
 
-export { TestComponent };
+export { ScnButton, cn };
