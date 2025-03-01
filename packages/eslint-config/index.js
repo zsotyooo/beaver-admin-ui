@@ -9,13 +9,17 @@ export default defineConfigWithVueTs(
 	{
 		ignores: ["**/dist/**"],
 	},
+	pluginVue.configs["flat/essential"],
 	{
-		included: ["**/*.vue"],
+		files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.vue"],
 		rules: {
 			"vue/multi-word-component-names": "off",
+			"@typescript-eslint/no-unused-vars": [
+				"error",
+				{ varsIgnorePattern: "^_" },
+			],
 		},
 	},
-	pluginVue.configs["flat/essential"],
 	vueTsConfigs.recommended,
 	skipFormatting,
 );

@@ -8,6 +8,7 @@
 	"overrides": [
 		{
 			"files": ["*.yml", "*.yaml"],
+			"excludeFiles": ["**/*-lock.yml", "**/*-lock.yaml"],
 			"options": {
 				"tabWidth": 2,
 				"useTabs": true

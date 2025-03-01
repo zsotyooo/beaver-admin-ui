@@ -6,7 +6,10 @@
 		"dev:style-guide": "pnpm --filter @digital-beaver-admin/style-guide dev",
 		"dev": "pnpm --filter @digital-beaver-admin/admin-ui dev",
 		"build": "pnpm --filter @digital-beaver-admin/admin-ui build",
-		"lint": "eslint ."
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix",
+		"prettier": "prettier --ignore-path .gitignore .",
+		"prettier:fix": "prettier --ignore-path .gitignore --write ."
 	},
 	"devDependencies": {
 		"@digital-beaver-admin/eslint-config": "workspace:*",
