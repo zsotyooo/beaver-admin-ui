@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ScnButton, Camera, Rocket } from "@digital-beaver-admin/admin-ui";
+import { ScnButton, Camera } from "@digital-beaver-admin/admin-ui";
+import { reactive, shallowRef, watch } from "vue";
 
 const variants = [
 	"default",
@@ -12,16 +13,60 @@ const variants = [
 	"link",
 ];
 
-const sizes = ["lg", "default", "sm", "xs"];
-const iconSizes = ["icon-lg", "icon", "icon-sm", "icon-xs"];
+const state = reactive({
+	label: "Some text",
+	disabled: false,
+	size: "lg",
+	loading: false,
+	icon: false,
+});
+
+const previousLabel = shallowRef(state.label);
+
+watch(
+	() => state.size,
+	size => {
+		if (size.startsWith("icon")) {
+			if (state.label) {
+				previousLabel.value = state.label;
+				state.label = "";
+			}
+
+			if (!state.icon) {
+				state.icon = true;
+			}
+		} else {
+			state.label = previousLabel.value;
+		}
+	},
+);
+
+const sizes = [
+	"lg",
+	"default",
+	"sm",
+	"xs",
+	"icon-lg",
+	"icon",
+	"icon-sm",
+	"icon-xs",
+];
+
+const source = function (variant: string) {
+	return `${state.icon ? 'import { ScnButton, Camera } from "@digital-beaver-admin/admin-ui";\n//...' : ""}
+<ScnButton
+	:variant="'${variant}'"
+	:size="'${state.size}'"
+	:disabled="${state.disabled}"
+	:loading="${state.loading}"
+>
+	${state.icon ? "<Camera /> " : ""}${state.label}
+</ScnButton>`;
+};
 
 function ucFirst(str: string) {
 	return str.charAt(0).toUpperCase() + str.slice(1);
 }
-
-const source = `<ScnButton :variant="variant" :size="size">
-	Some text
-</ScnButton>`;
 </script>
 <template>
 	<Story
@@ -29,39 +74,31 @@ const source = `<ScnButton :variant="variant" :size="size">
 		:layout="{
 			type: 'grid',
 		}"
-		:source="source"
 	>
 		<Variant
 			:title="ucFirst(variant)"
 			v-for="variant in variants"
 			:key="variant"
+			:source="source(variant)"
 		>
-			<div class="htw-flex htw-flex-col htw-gap-2">
-				<div
-					v-for="size in sizes"
-					:key="size"
-					class="htw-flex htw-flex-col htw-gap-2"
+			<template #default>
+				<ScnButton
+					:variant="variant"
+					:size="state.size"
+					:disabled="state.disabled"
+					:loading="state.loading"
 				>
-					<div>
-						<ScnButton :variant="variant" :size="size">
-							{{ ucFirst(variant) }}
-						</ScnButton>
-					</div>
-					<div>
-						<ScnButton :variant="variant" :size="size">
-							<Camera />
-							{{ ucFirst(variant) }}
-						</ScnButton>
-					</div>
-				</div>
-				<div class="htw-flex htw-gap-2">
-					<div v-for="size in iconSizes" :key="size">
-						<ScnButton :variant="variant" :size="size">
-							<Rocket />
-						</ScnButton>
-					</div>
-				</div>
-			</div>
+					<Camera v-if="state.icon" />
+					{{ state.label }}
+				</ScnButton>
+			</template>
+			<template #controls>
+				<HstText v-model="state.label" title="Label" />
+				<HstCheckbox v-model="state.icon" title="With Icon" />
+				<HstCheckbox v-model="state.disabled" title="Disabled" />
+				<HstCheckbox v-model="state.loading" title="Loading" />
+				<HstSelect v-model="state.size" :options="sizes" title="Size" />
+			</template>
 		</Variant>
 	</Story>
 </template>
