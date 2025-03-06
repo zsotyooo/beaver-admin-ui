@@ -8,7 +8,14 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    BeaLogo: typeof import('./components/bea/logo/BeaLogo.vue')['default']
+    BeaSidebar: typeof import('./components/bea/sidebar/BeaSidebar.vue')['default']
+    BeaSidebarNavigation: typeof import('./components/bea/sidebar/BeaSidebarNavigation.vue')['default']
+    BeaSidebarNavigationBlock: typeof import('./components/bea/sidebar/BeaSidebarNavigationBlock.vue')['default']
     Button: typeof import('./components/ui/button/Button.vue')['default']
+    Collapsible: typeof import('./components/ui/collapsible/Collapsible.vue')['default']
+    CollapsibleContent: typeof import('./components/ui/collapsible/CollapsibleContent.vue')['default']
+    CollapsibleTrigger: typeof import('./components/ui/collapsible/CollapsibleTrigger.vue')['default']
     Input: typeof import('./components/ui/input/Input.vue')['default']
     Separator: typeof import('./components/ui/separator/Separator.vue')['default']
     Sheet: typeof import('./components/ui/sheet/Sheet.vue')['default']

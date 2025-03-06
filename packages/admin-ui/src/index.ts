@@ -16,6 +16,11 @@ export {
 	SheetTrigger as ScnSheetTrigger,
 } from "./components/ui/sheet";
 export {
+	Collapsible as ScnCollapsible,
+	CollapsibleContent as ScnCollapsibleContent,
+	CollapsibleTrigger as ScnCollapsibleTrigger,
+} from "./components/ui/collapsible";
+export {
 	Sidebar as ScnSidebar,
 	SidebarContent as ScnSidebarContent,
 	SidebarFooter as ScnSidebarFooter,
@@ -48,5 +53,19 @@ export {
 	TooltipProvider as ScnTooltipProvider,
 	TooltipTrigger as ScnTooltipTrigger,
 } from "./components/ui/tooltip";
+
+export {
+	useBeaNavigationStore,
+	isBeaNavigationItemBlock,
+	isBeaNavigationItemLink,
+	type BeaNavigationItem,
+	type BeaNavigationItemLink,
+	type BeaNavigationItemBlock,
+} from "./components/bea/navigation";
+export {
+	BeaSidebarNavigationBlock,
+	BeaSidebarNavigation,
+	BeaSidebar,
+} from "./components/bea/sidebar";
 
 export { cn } from "./lib/scn-utils";

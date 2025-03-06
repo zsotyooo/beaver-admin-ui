@@ -133,3 +133,5 @@ dist
 
 # Editors
 .vscode
+
+*storybook.log

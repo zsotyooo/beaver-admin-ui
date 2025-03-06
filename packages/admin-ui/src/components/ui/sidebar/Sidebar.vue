@@ -41,7 +41,14 @@ const { isMobile, state, openMobile, setOpenMobile } = useSidebar();
 			data-sidebar="sidebar"
 			data-mobile="true"
 			:side="side"
-			class="bg-sidebar text-sidebar-foreground w-[--sidebar-width] p-0 [&>button]:hidden"
+			:class="
+				cn(
+					'from-sidebar-from via-sidebar to-sidebar-to text-sidebar-foreground w-[--sidebar-width] overflow-y-auto border-none bg-gradient-to-b p-0 pb-4 pt-12 shadow [&>button]:hidden',
+					side === 'left'
+						? 'rounded-br-3xl rounded-tr-3xl'
+						: 'rounded-bl-3xl rounded-tl-3xl',
+				)
+			"
 			:style="{
 				'--sidebar-width': SIDEBAR_WIDTH_MOBILE,
 			}"
@@ -83,7 +90,7 @@ const { isMobile, state, openMobile, setOpenMobile } = useSidebar();
 					// Adjust the padding for floating and inset variants.
 					variant === 'floating' || variant === 'inset'
 						? 'p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4)_+2px)]'
-						: 'group-data-[collapsible=icon]:w-[--sidebar-width-icon] group-data-[side=left]:border-r group-data-[side=right]:border-l',
+						: 'group-data-[collapsible=icon]:w-[--sidebar-width-icon]',
 					props.class,
 				)
 			"
@@ -91,7 +98,14 @@ const { isMobile, state, openMobile, setOpenMobile } = useSidebar();
 		>
 			<div
 				data-sidebar="sidebar"
-				class="text-sidebar-foreground bg-sidebar group-data-[variant=floating]:border-sidebar-border flex h-full w-full flex-col group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:shadow"
+				:class="
+					cn(
+						'text-sidebar-foreground from-sidebar-from via-sidebar to-sidebar-to rounded-tr-4xl rounded-br-4xl flex h-full w-full flex-col overflow-y-auto border-none bg-gradient-to-b pt-16 shadow-[inset_-5px_5px_30px_hsl(var(--sidebar-background-to))] group-data-[variant=floating]:rounded-lg group-data-[collapsible=icon]:!pr-0 group-data-[collapsible=icon]:pt-10 group-data-[variant=floating]:shadow',
+						side === 'left'
+							? 'rounded-br-3xl rounded-tr-3xl'
+							: 'rounded-bl-3xl rounded-tl-3xl',
+					)
+				"
 			>
 				<slot />
 			</div>

@@ -1,26 +1,34 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from "vue";
-import { cn } from "@/lib/scn-utils";
 import { Button } from "@/components/ui/button";
 import { PanelLeft } from "lucide-vue-next";
 import { useSidebar } from "./utils";
+import { Primitive, type PrimitiveProps } from "reka-ui";
+import { type SidebarMenuButtonVariants } from ".";
 
-const props = defineProps<{
-	class?: HTMLAttributes["class"];
-}>();
+export interface SidebarTriggerProps extends PrimitiveProps {
+	size?: SidebarMenuButtonVariants["size"];
+}
+
+withDefaults(defineProps<SidebarTriggerProps>(), {
+	as: Button,
+});
 
 const { toggleSidebar } = useSidebar();
 </script>
 
 <template>
-	<Button
+	<Primitive
 		data-sidebar="trigger"
 		variant="ghost"
 		size="icon"
-		:class="cn('h-7 w-7', props.class)"
 		@click="toggleSidebar"
+		:as="as"
+		:as-child="asChild"
+		v-bind="$attrs"
 	>
-		<PanelLeft />
-		<span class="sr-only">Toggle Sidebar</span>
-	</Button>
+		<slot>
+			<PanelLeft />
+			<span class="sr-only">Toggle Sidebar</span>
+		</slot>
+	</Primitive>
 </template>
